@@ -51,5 +51,23 @@ const animateOnScroll = () => {
     const screenPosition = window.innerHeight / 1.2;
     
     if (elementPosition < screenPosition) {
-        element.style.opacity = '1';
-        element.style.transform = 'translateY(0)';
+      element.style.opacity = '1';
+      element.style.transform = 'translateY(0)';
+    }
+  });
+};
+
+// Set initial state for animation
+document.addEventListener('DOMContentLoaded', () => {
+  const elements = document.querySelectorAll('.skill-card, .language-card, .education-item, .info-item');
+  elements.forEach(element => {
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(20px)';
+    element.style.transition = 'all 0.5s ease';
+  });
+  
+  // Trigger animation once on load for elements in view
+  animateOnScroll();
+});
+
+window.addEventListener('scroll', animateOnScroll);
